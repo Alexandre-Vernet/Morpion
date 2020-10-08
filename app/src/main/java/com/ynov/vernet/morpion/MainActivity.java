@@ -101,28 +101,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // Placer un pion sur la case cliquée
     public void placementPion(int noBtn) {
-        // Choix du pion en fonction du joueur 1 ou 2
-        choixPion++;
+        if (btn[noBtn].getText() == "") {
+            // Choix du pion en fonction du joueur 1 ou 2
+            choixPion++;
 
-        // Différencier les croix des ronds
-        String pion;
+            // Différencier les croix des ronds
+            String pion;
 
-        if (choixPion % 2 == 0) {
-            pion = "X";
-            croix[noBtn] = true;
-            btn[noBtn].setTextColor(getResources().getColor(R.color.joueur1));
-        } else {
-            pion = "O";
-            rond[noBtn] = true;
-            btn[noBtn].setTextColor(getResources().getColor(R.color.joueur2));
+            if (choixPion % 2 == 0) {
+                pion = "X";
+                croix[noBtn] = true;
+                btn[noBtn].setTextColor(getResources().getColor(R.color.joueur1));
+            } else {
+                pion = "O";
+                rond[noBtn] = true;
+                btn[noBtn].setTextColor(getResources().getColor(R.color.joueur2));
+            }
+            box[noBtn] = true;
+
+            // Placement du pion au clic du bouton
+            btn[noBtn].setText(pion);
+
+            // Vérifier si un joueur a gagné ou si la grille est pleine
+            stats();
         }
-        box[noBtn] = true;
-
-        // Placement du pion au clic du bouton
-        btn[noBtn].setText(pion);
-
-        // Vérifier si un joueur a gagné ou si la grille est pleine
-        stats();
     }
 
     public void stats() {
