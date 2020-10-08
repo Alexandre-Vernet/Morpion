@@ -6,12 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    // Différencier les croix des ronds
-    private String pion = "";
 
     // Gérer les scores entre croix et rond
     private boolean[] croix = new boolean[9];
@@ -96,6 +93,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void placementPion(int noBtn) {
         // Choix du pion en fonction du joueur 1 ou 2
         choixPion++;
+
+        // Différencier les croix des ronds
+        String pion = "";
+
         if (choixPion % 2 == 0) {
             pion = "X";
             croix[noBtn] = true;
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                        rejouer();
                     }
                 });
         alertDialog.show();
@@ -167,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                        rejouer();
                     }
                 });
         alertDialog.show();
@@ -181,8 +184,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                        rejouer();
                     }
                 });
         alertDialog.show();
+    }
+
+    public void rejouer() {
+        choixPion = 1;
+        // Réinitialisation des cases
+        for (int i = 0; i <= 8; i++) {
+            croix[i] = false;
+            rond[i] = false;
+            box[i] = false;
+        }
+
+        // Remise à 0 du texte sur les boutons
+        for (int i = 0; i <= 8; i++) {
+            btn[i].setText(" ");
+        }
     }
 }
