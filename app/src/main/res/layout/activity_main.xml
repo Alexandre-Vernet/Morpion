@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Morpion 2 joueurs"
+        android:text="@string/app_name"
         android:textSize="30dp" />
 
 
@@ -19,59 +19,104 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <Button
+        <TextView
             android:id="@+id/btn0"
             android:layout_width="125dp"
-            android:layout_height="125dp" />
+            android:layout_height="125dp"
+            android:layout_marginLeft="5dp"
+            android:background="#dadada"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <Button
+        <TextView
             android:id="@+id/btn1"
             android:layout_width="125dp"
-            android:layout_height="125dp" />
+            android:layout_height="125dp"
+            android:layout_marginLeft="5dp"
+            android:background="#dadada"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <Button
+        <TextView
             android:id="@+id/btn2"
             android:layout_width="125dp"
-            android:layout_height="125dp" />
+            android:layout_height="125dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#dadada"
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <Button
+        <TextView
             android:id="@+id/btn3"
             android:layout_width="125dp"
-            android:layout_height="125dp" />
+            android:layout_height="125dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#dadada"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <Button
+        <TextView
             android:id="@+id/btn4"
             android:layout_width="125dp"
-            android:layout_height="125dp" />
+            android:layout_height="125dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#dadada"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <Button
+        <TextView
             android:id="@+id/btn5"
             android:layout_width="125dp"
-            android:layout_height="125dp" />
+            android:layout_height="125dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#dadada"
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <Button
+        <TextView
             android:id="@+id/btn6"
             android:layout_width="125dp"
-            android:layout_height="125dp" />
+            android:layout_height="125dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#dadada"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <Button
+        <TextView
             android:id="@+id/btn7"
             android:layout_width="125dp"
-            android:layout_height="125dp" />
+            android:layout_height="125dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#dadada"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <Button
+        <TextView
             android:id="@+id/btn8"
             android:layout_width="125dp"
-            android:layout_height="125dp" />
+            android:layout_height="125dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#dadada"
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
 </LinearLayout>
