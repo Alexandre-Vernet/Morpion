@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -100,20 +99,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    // 
+    // Placer un pion sur la case cliquée
     public void placementPion(int noBtn) {
         // Choix du pion en fonction du joueur 1 ou 2
         choixPion++;
 
         // Différencier les croix des ronds
-        String pion = "";
+        String pion;
 
         if (choixPion % 2 == 0) {
             pion = "X";
             croix[noBtn] = true;
+            btn[noBtn].setTextColor(getResources().getColor(R.color.joueur1));
         } else {
             pion = "O";
             rond[noBtn] = true;
+            btn[noBtn].setTextColor(getResources().getColor(R.color.joueur2));
         }
         box[noBtn] = true;
 
@@ -151,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if ((rond[0] && rond[4] && rond[8]) || (rond[2] && rond[4] && rond[6]))
             victoireRond();
 
-        // Si la grille est pleine
+        /*Si la grille est pleine*/
         if (box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8])
             egalite();
     }
@@ -174,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Incrémenter le compteur de victoire
         scoreJ1++;
         m_ScoreJ1.setText("Joueur 1 : " + scoreJ1);
-
     }
 
     // Si le joueur 2 gagne
