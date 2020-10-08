@@ -3,10 +3,13 @@ package com.ynov.vernet.morpion;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -14,6 +17,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean[] croix = new boolean[9];
     private boolean[] rond = new boolean[9];
     private boolean[] box = new boolean[9];
+
+    // Créer les scores
+    TextView m_ScoreJ1, m_ScoreJ2;
+    private int scoreJ1, scoreJ2 = 0;
 
     // Regrouper les boutons dans un tableau
     TextView[] btn = new TextView[9];
@@ -25,6 +32,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Référencer les scores
+        m_ScoreJ1 = (TextView) findViewById(R.id.scoreJ1);
+        m_ScoreJ2 = (TextView) findViewById(R.id.scoreJ2);
 
         // Référencer les boutons
         btn[0] = (TextView) findViewById(R.id.btn0);
@@ -109,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Placement du pion au clic du bouton
         btn[noBtn].setText(pion);
 
-        // Vérifier si un joueur a gagné
+        // Vérifier si un joueur a gagné ou si la grille est pleine
         stats();
     }
 
@@ -146,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     // Si le joueur 1 gagne
+    @SuppressLint("SetTextI18n")
     public void victoireCroix() {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("Victoire");
@@ -158,9 +170,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
         alertDialog.show();
+
+        // Incrémenter le compteur de victoire
+        scoreJ1++;
+        m_ScoreJ1.setText("Joueur 1 : " + scoreJ1);
+
     }
 
     // Si le joueur 2 gagne
+    @SuppressLint("SetTextI18n")
     public void victoireRond() {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("Victoire");
@@ -173,6 +191,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
         alertDialog.show();
+
+        // Incrémenter le compteur de victoire
+        scoreJ2++;
+        m_ScoreJ2.setText("Joueur 2 : " + scoreJ2);
     }
 
     // Si la grille est rempli et que personne n'a gagné

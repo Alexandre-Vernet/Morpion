@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Morpion</string>
+    <string name="joueur1">Joueur 1 : 0</string>
+    <string name="joueur2">Joueur 2 : 0</string>
 </resources>
