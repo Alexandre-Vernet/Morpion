@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean[] croix = new boolean[9];
     private boolean[] rond = new boolean[9];
     private boolean[] box = new boolean[9];
+    private boolean victoire = false;
 
     // Créer les scores
     TextView m_ScoreJ1, m_ScoreJ2;
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // Placer un pion sur la case cliquée
     public void placementPion(int noBtn) {
+        // Ne pas re-cliquer 2 fois sur la même case
         if (btn[noBtn].getText() == "") {
             // Choix du pion en fonction du joueur 1 ou 2
             choixPion++;
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // Différencier les croix des ronds
             String pion;
 
+            // Choisir entre une croix ou un rond
             if (choixPion % 2 == 0) {
                 pion = "X";
                 croix[noBtn] = true;
@@ -127,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    // Gestion des manches gagnées
     public void stats() {
         /*Croix*/
         // Ligne
@@ -155,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             victoireRond();
 
         /*Si la grille est pleine*/
-        if (box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8])
+        if (box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8] && !victoire)
             egalite();
     }
 
@@ -177,6 +181,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Incrémenter le compteur de victoire
         scoreJ1++;
         m_ScoreJ1.setText("Joueur 1 : " + scoreJ1);
+
+        victoire = true;
     }
 
     // Si le joueur 2 gagne
@@ -212,6 +218,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
         alertDialog.show();
+        victoire = true;
     }
 
     public void rejouer() {
@@ -225,7 +232,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Remise à 0 du texte sur les boutons
         for (int i = 0; i <= 8; i++) {
-            btn[i].setText(" ");
+            btn[i].setText("");
         }
+
+        victoire = false;
     }
 }
