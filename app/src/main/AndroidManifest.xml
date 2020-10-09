@@ -10,9 +10,18 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DeuxJoueursActivity"></activity>
-        <activity android:name=".UnJoueurActivity" />
-        <activity android:name=".MainActivity">
+
+        <activity
+            android:name=".DeuxJoueursActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".UnJoueurActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
