@@ -14,12 +14,14 @@
         android:text="@string/app_name"
         android:textSize="50sp" />
 
-    <EditText
+    <TextView
+        android:id="@+id/nomJoueur1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Entrez votre nom"
         android:textColor="#FFF"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:text="Bienvenue [nomJoueur]"
+        android:layout_marginTop="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
