@@ -175,6 +175,7 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
                         rejouer();
                     }
                 });
+        alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
 
         // Incrémenter le compteur de victoire
@@ -196,6 +197,7 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
                         rejouer();
                     }
                 });
+        alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
 
         // Incrémenter le compteur de victoire
@@ -215,6 +217,7 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
                         rejouer();
                     }
                 });
+        alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
         victoire = true;
     }
