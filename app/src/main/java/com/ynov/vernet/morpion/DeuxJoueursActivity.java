@@ -3,7 +3,6 @@ package com.ynov.vernet.morpion;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,35 +33,35 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_deux_joueurs);
 
         // Référencer les scores
-        m_ScoreJ1 = (TextView) findViewById(R.id.scoreJ1);
-        m_ScoreJ2 = (TextView) findViewById(R.id.scoreJ2);
+        m_ScoreJ1 = findViewById(R.id.scoreJ1);
+        m_ScoreJ2 = findViewById(R.id.scoreJ2);
 
         // Référencer les boutons
-        btn[0] = (TextView) findViewById(R.id.btn0);
+        btn[0] = findViewById(R.id.btn0);
         btn[0].setOnClickListener(this);
 
-        btn[1] = (TextView) findViewById(R.id.btn1);
+        btn[1] = findViewById(R.id.btn1);
         btn[1].setOnClickListener(this);
 
-        btn[2] = (TextView) findViewById(R.id.btn2);
+        btn[2] = findViewById(R.id.btn2);
         btn[2].setOnClickListener(this);
 
-        btn[3] = (TextView) findViewById(R.id.btn3);
+        btn[3] = findViewById(R.id.btn3);
         btn[3].setOnClickListener(this);
 
-        btn[4] = (TextView) findViewById(R.id.btn4);
+        btn[4] = findViewById(R.id.btn4);
         btn[4].setOnClickListener(this);
 
-        btn[5] = (TextView) findViewById(R.id.btn5);
+        btn[5] = findViewById(R.id.btn5);
         btn[5].setOnClickListener(this);
 
-        btn[6] = (TextView) findViewById(R.id.btn6);
+        btn[6] = findViewById(R.id.btn6);
         btn[6].setOnClickListener(this);
 
-        btn[7] = (TextView) findViewById(R.id.btn7);
+        btn[7] = findViewById(R.id.btn7);
         btn[7].setOnClickListener(this);
 
-        btn[8] = (TextView) findViewById(R.id.btn8);
+        btn[8] = findViewById(R.id.btn8);
         btn[8].setOnClickListener(this);
     }
 

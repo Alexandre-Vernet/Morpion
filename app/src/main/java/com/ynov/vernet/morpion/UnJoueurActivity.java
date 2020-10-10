@@ -7,10 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class UnJoueurActivity extends AppCompatActivity implements View.OnClickListener {
@@ -20,7 +18,6 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
     private boolean[] rond = new boolean[9];
     private boolean[] box = new boolean[9];
     private boolean victoire = false;
-    private int choixOrdi = 0;
 
     // Créer les scores
     TextView m_ScoreJ1, m_ScoreJ2;
@@ -35,35 +32,35 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_un_joueur);
 
         // Référencer les scores
-        m_ScoreJ1 = (TextView) findViewById(R.id.scoreJ1);
-        m_ScoreJ2 = (TextView) findViewById(R.id.scoreJ2);
+        m_ScoreJ1 = findViewById(R.id.scoreJ1);
+        m_ScoreJ2 = findViewById(R.id.scoreJ2);
 
         // Référencer les boutons
-        btn[0] = (TextView) findViewById(R.id.btn0);
+        btn[0] = findViewById(R.id.btn0);
         btn[0].setOnClickListener(this);
 
-        btn[1] = (TextView) findViewById(R.id.btn1);
+        btn[1] = findViewById(R.id.btn1);
         btn[1].setOnClickListener(this);
 
-        btn[2] = (TextView) findViewById(R.id.btn2);
+        btn[2] = findViewById(R.id.btn2);
         btn[2].setOnClickListener(this);
 
-        btn[3] = (TextView) findViewById(R.id.btn3);
+        btn[3] = findViewById(R.id.btn3);
         btn[3].setOnClickListener(this);
 
-        btn[4] = (TextView) findViewById(R.id.btn4);
+        btn[4] = findViewById(R.id.btn4);
         btn[4].setOnClickListener(this);
 
-        btn[5] = (TextView) findViewById(R.id.btn5);
+        btn[5] = findViewById(R.id.btn5);
         btn[5].setOnClickListener(this);
 
-        btn[6] = (TextView) findViewById(R.id.btn6);
+        btn[6] = findViewById(R.id.btn6);
         btn[6].setOnClickListener(this);
 
-        btn[7] = (TextView) findViewById(R.id.btn7);
+        btn[7] = findViewById(R.id.btn7);
         btn[7].setOnClickListener(this);
 
-        btn[8] = (TextView) findViewById(R.id.btn8);
+        btn[8] = findViewById(R.id.btn8);
         btn[8].setOnClickListener(this);
     }
 
@@ -116,7 +113,7 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
             stats();
 
             // Choix du pion par l'ordi
-            choixOrdi = ThreadLocalRandom.current().nextInt(0, 8);
+            int choixOrdi = ThreadLocalRandom.current().nextInt(0, 8);
 
             // Faire jouer l'ordi
             placementPionOrdi(choixOrdi);
