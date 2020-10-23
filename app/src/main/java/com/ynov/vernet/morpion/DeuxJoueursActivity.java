@@ -3,8 +3,10 @@ package com.ynov.vernet.morpion;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -35,6 +37,7 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
         // Référencer les scores
         m_ScoreJ1 = findViewById(R.id.scoreJ1);
         m_ScoreJ2 = findViewById(R.id.scoreJ2);
+
 
         // Référencer les boutons
         btn[0] = findViewById(R.id.btn0);

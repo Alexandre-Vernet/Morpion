@@ -18,10 +18,10 @@
         android:id="@+id/nomJoueur1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Bienvenue "
+        android:layout_marginTop="20dp"
         android:textColor="#FFF"
-        android:textSize="20dp"
-        android:text="Bienvenue [nomJoueur]"
-        android:layout_marginTop="20dp" />
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,28 +33,28 @@
             android:id="@+id/btn1Joueur"
             android:layout_width="250dp"
             android:layout_height="100dp"
-            android:text="1 joueur"
+            android:text="@string/menu_1_joueur"
             android:textSize="30sp" />
 
         <Button
             android:id="@+id/btn2Joueurs"
             android:layout_width="250dp"
             android:layout_height="100dp"
-            android:text="2 joueurs"
+            android:text="@string/menu_2_joueurs"
             android:textSize="30sp" />
 
         <Button
             android:id="@+id/btnAPropos"
             android:layout_width="250dp"
             android:layout_height="100dp"
-            android:text="A propos"
+            android:text="@string/menu_a_propos"
             android:textSize="30sp" />
 
         <Button
             android:id="@+id/btnQuitter"
             android:layout_width="250dp"
             android:layout_height="100dp"
-            android:text="Quitter"
+            android:text="@string/menu_quitter"
             android:textSize="30sp" />
     </LinearLayout>
 </LinearLayout>

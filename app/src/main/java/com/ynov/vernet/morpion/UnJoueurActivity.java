@@ -1,30 +1,32 @@
 package com.ynov.vernet.morpion;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public class UnJoueurActivity extends AppCompatActivity implements View.OnClickListener {
+
+    // Créer les scores
+    TextView m_ScoreJ1, m_ScoreJ2;
+
+    // Regrouper les boutons dans un tableau
+    TextView[] btn = new TextView[9];
 
     // Gérer les scores entre croix et rond
     private boolean[] croix = new boolean[9];
     private boolean[] rond = new boolean[9];
     private boolean[] box = new boolean[9];
     private boolean victoire = false;
-
-    // Créer les scores
-    TextView m_ScoreJ1, m_ScoreJ2;
     private int scoreJ1, scoreJ2 = 0;
-
-    // Regrouper les boutons dans un tableau
-    TextView[] btn = new TextView[9];
+    private int choixOrdi = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,24 +114,44 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
             // Vérifier si un joueur a gagné ou si la grille est pleine
             stats();
 
-            // Choix du pion par l'ordi
-            int choixOrdi = ThreadLocalRandom.current().nextInt(0, 8);
-
-            // Faire jouer l'ordi
-            placementPionOrdi(choixOrdi);
+            // Attendre 1 secondes et faire jouer l'ordi
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    choixPionOrdi();
+                }
+            }, 1000);
         }
     }
 
     // Choix du pion par l'ordi
+    public void choixPionOrdi() {
+        // Choisir un nombre entre 0 et 8
+        choixOrdi = ThreadLocalRandom.current().nextInt(0, 8);
+
+        // Si l'ordi choisit de jouer sur une case déjà jouée
+        for (int i = 0; i <= 9; i++)
+            while (choixOrdi == i && box[i])
+                // Re-tirer un nombre
+                choixOrdi = ThreadLocalRandom.current().nextInt(0, 8);
+
+        // Faire jouer l'ordi
+        placementPionOrdi(choixOrdi);
+    }
+
+    // Choix du pion par l'ordi
     public void placementPionOrdi(int noBtn) {
-        rond[noBtn] = true;
-        btn[noBtn].setTextColor(getResources().getColor(R.color.joueur2));
+        if (!victoire) {
+            rond[noBtn] = true;
+            btn[noBtn].setTextColor(getResources().getColor(R.color.joueur2));
 
-        // Placement du pion
-        btn[noBtn].setText("O");
+            // Placement du pion
+            btn[noBtn].setText("O");
 
-        // Vérifier si un joueur a gagné ou si la grille est pleine
-        stats();
+            // Vérifier si un joueur a gagné ou si la grille est pleine
+            stats();
+        }
     }
 
     // Gestion des manches gagnées

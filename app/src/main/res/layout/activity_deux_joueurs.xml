@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="2 joueurs"
-        android:textSize="50dp" />
+        android:textSize="50sp" />
 
 
     <LinearLayout
@@ -67,7 +67,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:textAlignment="center"
-                android:textSize="90dp" />
+                android:textSize="90sp" />
 
             <TextView
                 android:id="@+id/btn1"
@@ -78,7 +78,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:textAlignment="center"
-                android:textSize="90dp" />
+                android:textSize="90sp" />
 
             <TextView
                 android:id="@+id/btn2"
@@ -90,7 +90,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:textAlignment="center"
-                android:textSize="90dp" />
+                android:textSize="90sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -107,7 +107,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:textAlignment="center"
-                android:textSize="90dp" />
+                android:textSize="90sp" />
 
             <TextView
                 android:id="@+id/btn4"
@@ -119,7 +119,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:textAlignment="center"
-                android:textSize="90dp" />
+                android:textSize="90sp" />
 
             <TextView
                 android:id="@+id/btn5"
@@ -132,7 +132,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:textAlignment="center"
-                android:textSize="90dp" />
+                android:textSize="90sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -149,7 +149,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:textAlignment="center"
-                android:textSize="90dp" />
+                android:textSize="90sp" />
 
             <TextView
                 android:id="@+id/btn7"
@@ -161,7 +161,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:textAlignment="center"
-                android:textSize="90dp" />
+                android:textSize="90sp" />
 
             <TextView
                 android:id="@+id/btn8"
@@ -174,7 +174,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:textAlignment="center"
-                android:textSize="90dp" />
+                android:textSize="90sp" />
         </LinearLayout>
 
     </LinearLayout>

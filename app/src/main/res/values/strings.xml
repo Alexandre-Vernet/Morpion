@@ -2,4 +2,8 @@
     <string name="app_name">Morpion</string>
     <string name="joueur1">Joueur 1 : 0</string>
     <string name="joueur2">Joueur 2 : 0</string>
+    <string name="menu_1_joueur">1 joueur</string>
+    <string name="menu_2_joueurs">2 joueurs</string>
+    <string name="menu_a_propos">A propos</string>
+    <string name="menu_quitter">Quitter</string>
 </resources>
