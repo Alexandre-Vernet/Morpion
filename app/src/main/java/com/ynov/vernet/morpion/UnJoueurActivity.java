@@ -1,5 +1,6 @@
 package com.ynov.vernet.morpion;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,12 +22,11 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
     TextView[] btn = new TextView[9];
 
     // Gérer les scores entre croix et rond
-    private boolean[] croix = new boolean[9];
-    private boolean[] rond = new boolean[9];
-    private boolean[] box = new boolean[9];
+    private final boolean[] croix = new boolean[9];
+    private final boolean[] rond = new boolean[9];
+    private final boolean[] box = new boolean[9];
     private boolean victoire = false;
     private int scoreJ1, scoreJ2 = 0;
-    private int choixOrdi = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +67,7 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
     }
 
     // Au clic d'un bouton
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -128,7 +129,7 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
     // Choix du pion par l'ordi
     public void choixPionOrdi() {
         // Choisir un nombre entre 0 et 8
-        choixOrdi = ThreadLocalRandom.current().nextInt(0, 8);
+        int choixOrdi = ThreadLocalRandom.current().nextInt(0, 8);
 
         // Si l'ordi choisit de jouer sur une case déjà jouée
         for (int i = 0; i <= 9; i++)
@@ -188,10 +189,11 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
     }
 
     // Si le joueur gagne
+    @SuppressLint("SetTextI18n")
     public void victoireCroix() {
         AlertDialog alertDialog = new AlertDialog.Builder(UnJoueurActivity.this).create();
-        alertDialog.setTitle("Victoire");
-        alertDialog.setMessage("Vous avez gagné !");
+        alertDialog.setTitle(getString(R.string.victoire));
+        alertDialog.setMessage(getString(R.string.gagne));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -204,16 +206,17 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
 
         // Incrémenter le compteur de victoire
         scoreJ1++;
-        m_ScoreJ1.setText("Joueur 1 : " + scoreJ1);
+        m_ScoreJ1.setText(getString(R.string.score_j1) + scoreJ1);
 
         victoire = true;
     }
 
     // Si le joueur 2 gagne
+    @SuppressLint("SetTextI18n")
     public void victoireRond() {
         AlertDialog alertDialog = new AlertDialog.Builder(UnJoueurActivity.this).create();
-        alertDialog.setTitle("Défaite");
-        alertDialog.setMessage("Vous avez perdu");
+        alertDialog.setTitle(getString(R.string.defaite));
+        alertDialog.setMessage(getString(R.string.perdu));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -226,14 +229,14 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
 
         // Incrémenter le compteur de victoire
         scoreJ2++;
-        m_ScoreJ2.setText("Joueur 2 : " + scoreJ2);
+        m_ScoreJ2.setText(getString(R.string.score_J2) + scoreJ2);
     }
 
     // Si la grille est rempli et que personne n'a gagné
     public void egalite() {
         AlertDialog alertDialog = new AlertDialog.Builder(UnJoueurActivity.this).create();
-        alertDialog.setTitle("Egalité");
-        alertDialog.setMessage("Personne n'a gagné !");
+        alertDialog.setTitle(getString(R.string.egalite));
+        alertDialog.setMessage(getString(R.string.personne_n_a_gagne));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

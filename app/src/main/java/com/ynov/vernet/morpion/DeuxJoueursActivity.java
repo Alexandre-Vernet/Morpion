@@ -1,22 +1,21 @@
 package com.ynov.vernet.morpion;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class DeuxJoueursActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Gérer les scores entre croix et rond
-    private boolean[] croix = new boolean[9];
-    private boolean[] rond = new boolean[9];
-    private boolean[] box = new boolean[9];
+    private final boolean[] croix = new boolean[9];
+    private final boolean[] rond = new boolean[9];
+    private final boolean[] box = new boolean[9];
     private boolean victoire = false;
 
     // Créer les scores
@@ -69,6 +68,7 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
     }
 
     // Au clic d'un bouton
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -166,10 +166,11 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
     }
 
     // Si le joueur 1 gagne
+    @SuppressLint("SetTextI18n")
     public void victoireCroix() {
         AlertDialog alertDialog = new AlertDialog.Builder(DeuxJoueursActivity.this).create();
-        alertDialog.setTitle("Victoire");
-        alertDialog.setMessage("Le joueur 1 gagne !");
+        alertDialog.setTitle(getString(R.string.victoire));
+        alertDialog.setMessage(getString(R.string.victoire_J1));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -182,16 +183,17 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
 
         // Incrémenter le compteur de victoire
         scoreJ1++;
-        m_ScoreJ1.setText("Joueur 1 : " + scoreJ1);
+        m_ScoreJ1.setText(getString(R.string.score_j1) + scoreJ1);
 
         victoire = true;
     }
 
     // Si le joueur 2 gagne
+    @SuppressLint("SetTextI18n")
     public void victoireRond() {
         AlertDialog alertDialog = new AlertDialog.Builder(DeuxJoueursActivity.this).create();
-        alertDialog.setTitle("Victoire");
-        alertDialog.setMessage("Le joueur 2 gagne !");
+        alertDialog.setTitle(getString(R.string.victoire));
+        alertDialog.setMessage(getString(R.string.victoire_J2));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -204,14 +206,14 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
 
         // Incrémenter le compteur de victoire
         scoreJ2++;
-        m_ScoreJ2.setText("Joueur 2 : " + scoreJ2);
+        m_ScoreJ2.setText(getString(R.string.score_J2) + scoreJ2);
     }
 
     // Si la grille est rempli et que personne n'a gagné
     public void egalite() {
         AlertDialog alertDialog = new AlertDialog.Builder(DeuxJoueursActivity.this).create();
-        alertDialog.setTitle("Egalité");
-        alertDialog.setMessage("Personne n'a gagné !");
+        alertDialog.setTitle(getString(R.string.egalite));
+        alertDialog.setMessage(getString(R.string.personne_n_a_gagne));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

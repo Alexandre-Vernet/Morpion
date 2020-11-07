@@ -1,5 +1,6 @@
 package com.ynov.vernet.morpion;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,6 +16,7 @@ public class nomJoueurActivity extends AppCompatActivity {
 
     EditText nomJoueur1;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

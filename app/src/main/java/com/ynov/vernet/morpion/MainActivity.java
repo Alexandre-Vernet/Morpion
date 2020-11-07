@@ -1,5 +1,6 @@
 package com.ynov.vernet.morpion;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView nomJoueur1;
     String sNomJoueur1;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Afficher le nom du joueur
         sNomJoueur1 = getIntent().getStringExtra("nomJoueur1");
-        nomJoueur1.setText("Bienvenue " + sNomJoueur1);
+        nomJoueur1.setText(getString(R.string.bienvenue) + sNomJoueur1);
 
         // Référencer les boutons
         Button btn1Joueur = findViewById(R.id.btn1Joueur);
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnQuitter.setOnClickListener(this);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
