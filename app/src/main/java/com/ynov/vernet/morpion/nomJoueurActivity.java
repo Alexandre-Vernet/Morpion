@@ -42,8 +42,9 @@ public class nomJoueurActivity extends AppCompatActivity {
                 editor.putString("nom", "" + nomJoueur1.getText());
                 editor.apply();
 
-                // Démarrer l'activité principale
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                // Démarrer l'activité principale en envoyant le nom du joueur
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                intent.putExtra("nomJoueur1", nomJoueur1.getText().toString());
                 startActivity(intent);
                 finish();
             }
@@ -52,7 +53,7 @@ public class nomJoueurActivity extends AppCompatActivity {
         // Si le joueur appui sur le bouton entrée de son clavier
         nomJoueur1.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
+                // S'il y a un clic sur le bouton entrée
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     // Stocker le nom du joueur saisi précédemment
                     SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);

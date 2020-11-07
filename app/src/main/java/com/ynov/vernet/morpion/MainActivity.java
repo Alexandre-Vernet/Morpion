@@ -1,8 +1,6 @@
 package com.ynov.vernet.morpion;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +10,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView nomJoueur1;
+    String sNomJoueur1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,55 +22,49 @@ public class MainActivity extends AppCompatActivity {
 
         nomJoueur1 = findViewById(R.id.nomJoueur1);
 
-        // Récupérer le nom du joueur 1 s'il existe
-        SharedPreferences prefs = getPreferences(Context.MODE_PRIVATE);
-        String nom = prefs.getString("nom", null);
+        // Afficher le nom du joueur
+        sNomJoueur1 = getIntent().getStringExtra("nomJoueur1");
+        nomJoueur1.setText("Bienvenue " + sNomJoueur1);
 
-        if (nom != null)
-            // Afficher le nom du joueur
-            nomJoueur1.setText("Bienvenue " + nom);
+        // Référencer les boutons
+        Button btn1Joueur = findViewById(R.id.btn1Joueur);
+        btn1Joueur.setOnClickListener(this);
 
-        // Mode 1 joueur
-        Button m_btn1Joueur = findViewById(R.id.btn1Joueur);
-        m_btn1Joueur.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), UnJoueurActivity.class);
-                startActivity(intent);
+        Button btn2Joueur = findViewById(R.id.btn2Joueurs);
+        btn2Joueur.setOnClickListener(this);
+
+        Button btnAPropos = findViewById(R.id.btnAPropos);
+        btnAPropos.setOnClickListener(this);
+
+        Button btnQuitter = findViewById(R.id.btnQuitter);
+        btnQuitter.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn1Joueur:
+                // Démarrer mode 1 joueur
+                Intent unJoueur = new Intent(getApplicationContext(), UnJoueurActivity.class);
+                startActivity(unJoueur);
                 finish();
-            }
-        });
-
-        // Mode 2 joueurs
-        Button m_btn2Joueurs = findViewById(R.id.btn2Joueurs);
-        m_btn2Joueurs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DeuxJoueursActivity.class);
-                startActivity(intent);
+                break;
+            case R.id.btn2Joueurs:
+                // Démarrer mode 1 joueur
+                Intent deuxJoueurs = new Intent(getApplicationContext(), DeuxJoueursActivity.class);
+                startActivity(deuxJoueurs);
                 finish();
-            }
-        });
-
-        // A propos
-        Button m_btnAPropos = findViewById(R.id.btnAPropos);
-        m_btnAPropos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+            case R.id.btnAPropos:
                 // Rediriger vers MyCode
-                Intent intent = new Intent("android.intent.action.VIEW",
+                Intent myCode = new Intent("android.intent.action.VIEW",
                         Uri.parse("http://alexandre-vernet.net"));
-                startActivity(intent);
-            }
-        });
-
-        // Quitter l'application
-        Button m_btnQuitter = findViewById(R.id.btnQuitter);
-        m_btnQuitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                startActivity(myCode);
+                break;
+            case R.id.btnQuitter:
+                // Quitter l'app
                 finish();
-            }
-        });
+                break;
+        }
     }
 }

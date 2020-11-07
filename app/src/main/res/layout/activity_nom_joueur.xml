@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Entrez votre nom : "
+            android:text="@string/entrez_votre_nom"
             android:textSize="30sp" />
 
         <EditText
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Votre nom"
+            android:hint="@string/votre_nom"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColor="#fff"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:padding="30dp"
-            android:text="Jouer"
+            android:text="@string/jouer"
             android:textSize="25sp" />
     </LinearLayout>
 
