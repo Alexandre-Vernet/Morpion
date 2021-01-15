@@ -1,9 +1,9 @@
 package com.ynov.vernet.morpion;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.net.Uri;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,59 +13,54 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView nomJoueur1;
-    String sNomJoueur1;
+    TextView textViewPlayer1;
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nomJoueur1 = findViewById(R.id.nomJoueur1);
+        textViewPlayer1 = findViewById(R.id.textViewPlayer1);
 
-        // Afficher le nom du joueur
-        sNomJoueur1 = getIntent().getStringExtra("nomJoueur1");
-        nomJoueur1.setText(getString(R.string.bienvenue) + sNomJoueur1);
+        // Read player1 name
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String namePlayer1 = prefs.getString("namePlayer1", null);
+        textViewPlayer1.setText(namePlayer1);
 
-        // Référencer les boutons
-        Button btn1Joueur = findViewById(R.id.btn1Joueur);
+        // Buttons
+        Button btn1Joueur = findViewById(R.id.btn1Player);
         btn1Joueur.setOnClickListener(this);
 
-        Button btn2Joueur = findViewById(R.id.btn2Joueurs);
+        Button btn2Joueur = findViewById(R.id.btn2Players);
         btn2Joueur.setOnClickListener(this);
 
-        Button btnAPropos = findViewById(R.id.btnAPropos);
+        Button btnAPropos = findViewById(R.id.btnSettings);
         btnAPropos.setOnClickListener(this);
 
-        Button btnQuitter = findViewById(R.id.btnQuitter);
+        Button btnQuitter = findViewById(R.id.btnLeave);
         btnQuitter.setOnClickListener(this);
     }
 
-    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn1Joueur:
-                // Démarrer mode 1 joueur
-                Intent unJoueur = new Intent(getApplicationContext(), UnJoueurActivity.class);
-                startActivity(unJoueur);
+            case R.id.btn1Player:
+                // 1 player
+                startActivity(new Intent(getApplicationContext(), OnePlayerActivity.class));
                 finish();
                 break;
-            case R.id.btn2Joueurs:
-                // Démarrer mode 1 joueur
-                Intent deuxJoueurs = new Intent(getApplicationContext(), DeuxJoueursActivity.class);
-                startActivity(deuxJoueurs);
+            case R.id.btn2Players:
+                // 2 players
+                startActivity(new Intent(getApplicationContext(), TwoPlayersActivity.class));
                 finish();
                 break;
-            case R.id.btnAPropos:
-                // Rediriger vers MyCode
-                Intent myCode = new Intent("android.intent.action.VIEW",
-                        Uri.parse("http://alexandre-vernet.net"));
-                startActivity(myCode);
+            case R.id.btnSettings:
+                // Settings
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                finish();
                 break;
-            case R.id.btnQuitter:
-                // Quitter l'app
+            case R.id.btnLeave:
+                // Leave app
                 finish();
                 break;
         }

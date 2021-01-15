@@ -15,11 +15,11 @@
         android:textSize="50sp" />
 
     <TextView
-        android:id="@+id/nomJoueur1"
+        android:id="@+id/textViewPlayer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bienvenue"
         android:layout_marginTop="20dp"
+        android:text="@string/bienvenue"
         android:textColor="#FFF"
         android:textSize="20sp" />
 
@@ -30,28 +30,28 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn1Joueur"
+            android:id="@+id/btn1Player"
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:text="@string/menu_1_joueur"
             android:textSize="30sp" />
 
         <Button
-            android:id="@+id/btn2Joueurs"
+            android:id="@+id/btn2Players"
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:text="@string/menu_2_joueurs"
             android:textSize="30sp" />
 
         <Button
-            android:id="@+id/btnAPropos"
+            android:id="@+id/btnSettings"
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:text="@string/menu_a_propos"
             android:textSize="30sp" />
 
         <Button
-            android:id="@+id/btnQuitter"
+            android:id="@+id/btnLeave"
             android:layout_width="250dp"
             android:layout_height="100dp"
             android:text="@string/menu_quitter"

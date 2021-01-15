@@ -9,7 +9,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.ynov.vernet.morpion"
-            android:targetClass="com.ynov.vernet.morpion.UnJoueurActivity" />
+            android:targetClass="com.ynov.vernet.morpion.OnePlayerActivity" />
     </shortcut>
 
     <!-- 2 joueurs -->
@@ -21,6 +21,6 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.ynov.vernet.morpion"
-            android:targetClass="com.ynov.vernet.morpion.DeuxJoueursActivity" />
+            android:targetClass="com.ynov.vernet.morpion.TwoPlayersActivity" />
     </shortcut>
 </shortcuts>

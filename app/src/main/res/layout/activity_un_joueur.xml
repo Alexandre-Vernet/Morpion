@@ -7,7 +7,7 @@
     android:background="@drawable/background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".UnJoueurActivity">
+    tools:context=".OnePlayerActivity">
 
     <!--    Mode de jeu-->
     <TextView

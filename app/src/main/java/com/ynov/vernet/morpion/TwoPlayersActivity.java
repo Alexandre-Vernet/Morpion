@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class DeuxJoueursActivity extends AppCompatActivity implements View.OnClickListener {
+public class TwoPlayersActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Gérer les scores entre croix et rond
     private final boolean[] croix = new boolean[9];
@@ -168,7 +168,7 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
     // Si le joueur 1 gagne
     @SuppressLint("SetTextI18n")
     public void victoireCroix() {
-        AlertDialog alertDialog = new AlertDialog.Builder(DeuxJoueursActivity.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(TwoPlayersActivity.this).create();
         alertDialog.setTitle(getString(R.string.victoire));
         alertDialog.setMessage(getString(R.string.victoire_J1));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -191,7 +191,7 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
     // Si le joueur 2 gagne
     @SuppressLint("SetTextI18n")
     public void victoireRond() {
-        AlertDialog alertDialog = new AlertDialog.Builder(DeuxJoueursActivity.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(TwoPlayersActivity.this).create();
         alertDialog.setTitle(getString(R.string.victoire));
         alertDialog.setMessage(getString(R.string.victoire_J2));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -211,7 +211,7 @@ public class DeuxJoueursActivity extends AppCompatActivity implements View.OnCli
 
     // Si la grille est rempli et que personne n'a gagné
     public void egalite() {
-        AlertDialog alertDialog = new AlertDialog.Builder(DeuxJoueursActivity.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(TwoPlayersActivity.this).create();
         alertDialog.setTitle(getString(R.string.egalite));
         alertDialog.setMessage(getString(R.string.personne_n_a_gagne));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",

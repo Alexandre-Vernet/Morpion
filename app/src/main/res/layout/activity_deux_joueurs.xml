@@ -7,7 +7,7 @@
     android:background="@drawable/background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".DeuxJoueursActivity">
+    tools:context=".TwoPlayersActivity">
 
     <!--    Mode de jeu-->
     <TextView

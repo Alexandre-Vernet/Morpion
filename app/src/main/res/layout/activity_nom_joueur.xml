@@ -6,40 +6,35 @@
     android:background="@drawable/background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".nomJoueurActivity">
+    tools:context=".PlayerNameActivity">
 
-    <LinearLayout
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-100dp"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_marginBottom="30dp"
+        android:text="@string/entrez_votre_nom"
+        android:textSize="30sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/entrez_votre_nom"
-            android:textSize="30sp" />
+    <EditText
+        android:id="@+id/editTexNamePlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/votre_nom"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="25sp" />
 
-        <EditText
-            android:id="@+id/nomJoueur1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/votre_nom"
-            android:inputType="textPersonName"
-            android:textAlignment="center"
-            android:textColor="#fff"
-            android:textSize="25sp" />
-
-        <Button
-            android:id="@+id/btnJouer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:padding="30dp"
-            android:text="@string/jouer"
-            android:textSize="25sp" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:text="@string/jouer"
+        android:textSize="25sp" />
 
 </LinearLayout>

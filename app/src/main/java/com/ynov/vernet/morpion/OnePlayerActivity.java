@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class UnJoueurActivity extends AppCompatActivity implements View.OnClickListener {
+public class OnePlayerActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Créer les scores
     TextView m_ScoreJ1, m_ScoreJ2;
@@ -191,7 +191,7 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
     // Si le joueur gagne
     @SuppressLint("SetTextI18n")
     public void victoireCroix() {
-        AlertDialog alertDialog = new AlertDialog.Builder(UnJoueurActivity.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(OnePlayerActivity.this).create();
         alertDialog.setTitle(getString(R.string.victoire));
         alertDialog.setMessage(getString(R.string.gagne));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -214,7 +214,7 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
     // Si le joueur 2 gagne
     @SuppressLint("SetTextI18n")
     public void victoireRond() {
-        AlertDialog alertDialog = new AlertDialog.Builder(UnJoueurActivity.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(OnePlayerActivity.this).create();
         alertDialog.setTitle(getString(R.string.defaite));
         alertDialog.setMessage(getString(R.string.perdu));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
@@ -234,7 +234,7 @@ public class UnJoueurActivity extends AppCompatActivity implements View.OnClickL
 
     // Si la grille est rempli et que personne n'a gagné
     public void egalite() {
-        AlertDialog alertDialog = new AlertDialog.Builder(UnJoueurActivity.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(OnePlayerActivity.this).create();
         alertDialog.setTitle(getString(R.string.egalite));
         alertDialog.setMessage(getString(R.string.personne_n_a_gagne));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
