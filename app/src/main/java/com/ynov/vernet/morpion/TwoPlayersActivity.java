@@ -12,33 +12,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class TwoPlayersActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // Gérer les scores entre croix et rond
+    // Crosses & Rounds
     private final boolean[] croix = new boolean[9];
     private final boolean[] rond = new boolean[9];
     private final boolean[] box = new boolean[9];
     private boolean victoire = false;
 
-    // Créer les scores
+    // Scores
     TextView m_ScoreJ1, m_ScoreJ2;
     private int scoreJ1, scoreJ2 = 0;
 
-    // Regrouper les boutons dans un tableau
     TextView[] btn = new TextView[9];
 
-    // Permet de permuter entre le pion croix ou rond
     private int choixPion = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deux_joueurs);
+        setContentView(R.layout.activity_two_players);
 
-        // Référencer les scores
+        // TextViews
         m_ScoreJ1 = findViewById(R.id.scoreJ1);
         m_ScoreJ2 = findViewById(R.id.scoreJ2);
 
 
-        // Référencer les boutons
+        // Buttons
         btn[0] = findViewById(R.id.btn0);
         btn[0].setOnClickListener(this);
 
@@ -67,7 +65,6 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
         btn[8].setOnClickListener(this);
     }
 
-    // Au clic d'un bouton
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
@@ -102,17 +99,14 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    // Placer un pion sur la case cliquée
     public void placementPion(int noBtn) {
-        // Ne pas re-cliquer 2 fois sur la même case
+        // No double click on case
         if (btn[noBtn].getText() == "") {
-            // Choix du pion en fonction du joueur 1 ou 2
+            // Difference between crosses & rounds
             choixPion++;
 
-            // Différencier les croix des ronds
             String pion;
 
-            // Choisir entre une croix ou un rond
             if (choixPion % 2 == 0) {
                 pion = "X";
                 croix[noBtn] = true;
@@ -124,48 +118,45 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
             }
             box[noBtn] = true;
 
-            // Placement du pion au clic du bouton
             btn[noBtn].setText(pion);
 
-            // Vérifier si un joueur a gagné ou si la grille est pleine
             stats();
         }
     }
 
-    // Gestion des manches gagnées
     public void stats() {
-        /*Croix*/
-        // Ligne
+        /*Crosses*/
+        // Lines
         if ((croix[0] && croix[1] && croix[2]) || (croix[3] && croix[4] && croix[5]) || (croix[6] && croix[7] && croix[8]))
             victoireCroix();
 
-        // Colonne
+        // Columns
         if ((croix[0] && croix[3] && croix[6]) || (croix[1] && croix[4] && croix[7]) || (croix[2] && croix[5] && croix[8]))
             victoireCroix();
 
-        // Diagonales
+        // Diagonals
         if ((croix[0] && croix[4] && croix[8]) || (croix[2] && croix[4] && croix[6]))
             victoireCroix();
 
-        /*Rond*/
-        // Ligne
+        /*Rounds*/
+        // Lines
         if ((rond[0] && rond[1] && rond[2]) || (rond[3] && rond[4] && rond[5]) || (rond[6] && rond[7] && rond[8]))
             victoireRond();
 
-        // Colonne
+        // Columns
         if ((rond[0] && rond[3] && rond[6]) || (rond[1] && rond[4] && rond[7]) || (rond[2] && rond[5] && rond[8]))
             victoireRond();
 
-        // Diagonales
+        // Diagonals
         if ((rond[0] && rond[4] && rond[8]) || (rond[2] && rond[4] && rond[6]))
             victoireRond();
 
-        /*Si la grille est pleine*/
+        /*If grid is full*/
         if (box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8] && !victoire)
             egalite();
     }
 
-    // Si le joueur 1 gagne
+    // Player 1 wins
     @SuppressLint("SetTextI18n")
     public void victoireCroix() {
         AlertDialog alertDialog = new AlertDialog.Builder(TwoPlayersActivity.this).create();
@@ -181,14 +172,14 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
 
-        // Incrémenter le compteur de victoire
+        // Increment score
         scoreJ1++;
         m_ScoreJ1.setText(getString(R.string.score_j1) + scoreJ1);
 
         victoire = true;
     }
 
-    // Si le joueur 2 gagne
+    // Player 2 wins
     @SuppressLint("SetTextI18n")
     public void victoireRond() {
         AlertDialog alertDialog = new AlertDialog.Builder(TwoPlayersActivity.this).create();
@@ -204,12 +195,12 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
 
-        // Incrémenter le compteur de victoire
+        // Increment score
         scoreJ2++;
         m_ScoreJ2.setText(getString(R.string.score_J2) + scoreJ2);
     }
 
-    // Si la grille est rempli et que personne n'a gagné
+    // if grid is full
     public void egalite() {
         AlertDialog alertDialog = new AlertDialog.Builder(TwoPlayersActivity.this).create();
         alertDialog.setTitle(getString(R.string.egalite));
@@ -228,14 +219,14 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
 
     public void rejouer() {
         choixPion = 1;
-        // Réinitialisation des cases
+        // Reset cases
         for (int i = 0; i <= 8; i++) {
             croix[i] = false;
             rond[i] = false;
             box[i] = false;
         }
 
-        // Remise à 0 du texte sur les boutons
+        // Reset texts
         for (int i = 0; i <= 8; i++) {
             btn[i].setText("");
         }
@@ -243,12 +234,11 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
         victoire = false;
     }
 
-    // Bouton retour
+    // Button back
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
     }
 }

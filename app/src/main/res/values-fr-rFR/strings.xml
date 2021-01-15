@@ -4,12 +4,11 @@
     <string name="joueur2">Joueur 2 : 0</string>
     <string name="menu_1_joueur">1 joueur</string>
     <string name="menu_2_joueurs">2 joueurs</string>
-    <string name="menu_a_propos">A propos</string>
+    <string name="menu_settings">Paramètres</string>
     <string name="menu_quitter">Quitter</string>
     <string name="entrez_votre_nom">Entrez votre nom</string>
     <string name="votre_nom">Votre nom</string>
     <string name="jouer">Jouer</string>
-    <string name="bienvenue">"Bienvenue "</string>
     <string name="victoire">Victoire</string>
     <string name="gagne">Vous avez gagné !</string>
     <string name="defaite">Défaite</string>
@@ -20,4 +19,9 @@
     <string name="personne_n_a_gagne">Personne n\'a gagné !</string>
     <string name="victoire_J1">Le joueur 1 gagne !</string>
     <string name="victoire_J2">Le joueur 2 gagne !</string>
+    <string name="general">Général</string>
+    <string name="cannot_be_empty">La zone de texte ne peut pas être vide</string>
+    <string name="name">Nom</string>
+    <string name="computer">Ordinateur : %1$d</string>
+    <string name="app_name">Morpion</string>
 </resources>

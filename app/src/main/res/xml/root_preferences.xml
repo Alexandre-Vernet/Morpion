@@ -4,7 +4,7 @@
 
         <EditTextPreference
             app:key="namePlayer1"
-            app:title="@string/nomJoueur1"
+            app:title="@string/name"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 </PreferenceScreen>

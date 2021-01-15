@@ -3,6 +3,7 @@ package com.ynov.vernet.morpion;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -10,18 +11,20 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public class OnePlayerActivity extends AppCompatActivity implements View.OnClickListener {
 
-    // Créer les scores
+    // Create score
     TextView m_ScoreJ1, m_ScoreJ2;
 
-    // Regrouper les boutons dans un tableau
+    String namePlayer1 = "";
+
     TextView[] btn = new TextView[9];
 
-    // Gérer les scores entre croix et rond
+    // Difference between crosses & rounds
     private final boolean[] croix = new boolean[9];
     private final boolean[] rond = new boolean[9];
     private final boolean[] box = new boolean[9];
@@ -31,13 +34,24 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_un_joueur);
+        setContentView(R.layout.activity_one_player);
 
-        // Référencer les scores
+        // Get name
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        namePlayer1 = prefs.getString("namePlayer1", null);
+        if (namePlayer1 == null) {
+            startActivity(new Intent(getApplicationContext(), PlayerNameActivity.class));
+            finish();
+        }
+
+        // Scores
         m_ScoreJ1 = findViewById(R.id.scoreJ1);
         m_ScoreJ2 = findViewById(R.id.scoreJ2);
 
-        // Référencer les boutons
+        m_ScoreJ1.setText(namePlayer1 + " : " + scoreJ1);
+        m_ScoreJ2.setText(getString(R.string.computer, scoreJ2));
+
+        // Buttons
         btn[0] = findViewById(R.id.btn0);
         btn[0].setOnClickListener(this);
 
@@ -66,7 +80,6 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
         btn[8].setOnClickListener(this);
     }
 
-    // Au clic d'un bouton
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
@@ -101,21 +114,20 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    // Choix du pion par le joueur
+    // Player choice
     public void placementPionJoueur(int noBtn) {
-        // Ne pas re-cliquer 2 fois sur la même case
+        // Don't double click
         if (btn[noBtn].getText() == "") {
             croix[noBtn] = true;
             btn[noBtn].setTextColor(getResources().getColor(R.color.joueur1));
             box[noBtn] = true;
 
-            // Placement du pion
             btn[noBtn].setText("X");
 
-            // Vérifier si un joueur a gagné ou si la grille est pleine
+            // Check stats
             stats();
 
-            // Attendre 1 secondes et faire jouer l'ordi
+            // Wait 1s and computer's turn
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -126,69 +138,66 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    // Choix du pion par l'ordi
+    // Computer choice
     public void choixPionOrdi() {
         // Choisir un nombre entre 0 et 8
         int choixOrdi = ThreadLocalRandom.current().nextInt(0, 8);
 
-        // Si l'ordi choisit de jouer sur une case déjà jouée
+        // if computer chose a wrong case
         for (int i = 0; i <= 9; i++)
             while (choixOrdi == i && box[i])
                 // Re-tirer un nombre
                 choixOrdi = ThreadLocalRandom.current().nextInt(0, 8);
 
-        // Faire jouer l'ordi
         placementPionOrdi(choixOrdi);
     }
 
-    // Choix du pion par l'ordi
+    // Computer playing
     public void placementPionOrdi(int noBtn) {
         if (!victoire) {
             rond[noBtn] = true;
             btn[noBtn].setTextColor(getResources().getColor(R.color.joueur2));
 
-            // Placement du pion
             btn[noBtn].setText("O");
 
-            // Vérifier si un joueur a gagné ou si la grille est pleine
             stats();
         }
     }
 
     // Gestion des manches gagnées
     public void stats() {
-        /*Croix*/
-        // Ligne
+        /*Crosses*/
+        // Lines
         if ((croix[0] && croix[1] && croix[2]) || (croix[3] && croix[4] && croix[5]) || (croix[6] && croix[7] && croix[8]))
             victoireCroix();
 
-        // Colonne
+        // Columns
         if ((croix[0] && croix[3] && croix[6]) || (croix[1] && croix[4] && croix[7]) || (croix[2] && croix[5] && croix[8]))
             victoireCroix();
 
-        // Diagonales
+        // Diagonals
         if ((croix[0] && croix[4] && croix[8]) || (croix[2] && croix[4] && croix[6]))
             victoireCroix();
 
-        /*Rond*/
-        // Ligne
+        /*Rounds*/
+        // Lines
         if ((rond[0] && rond[1] && rond[2]) || (rond[3] && rond[4] && rond[5]) || (rond[6] && rond[7] && rond[8]))
             victoireRond();
 
-        // Colonne
+        // Columns
         if ((rond[0] && rond[3] && rond[6]) || (rond[1] && rond[4] && rond[7]) || (rond[2] && rond[5] && rond[8]))
             victoireRond();
 
-        // Diagonales
+        // Diagonals
         if ((rond[0] && rond[4] && rond[8]) || (rond[2] && rond[4] && rond[6]))
             victoireRond();
 
-        /*Si la grille est pleine*/
+        /*If grid is full*/
         if (box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8] && !victoire)
             egalite();
     }
 
-    // Si le joueur gagne
+    // Player win
     @SuppressLint("SetTextI18n")
     public void victoireCroix() {
         AlertDialog alertDialog = new AlertDialog.Builder(OnePlayerActivity.this).create();
@@ -204,14 +213,14 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
 
-        // Incrémenter le compteur de victoire
+        // Increment score
         scoreJ1++;
-        m_ScoreJ1.setText(getString(R.string.score_j1) + scoreJ1);
+        m_ScoreJ1.setText(namePlayer1 + " : " + scoreJ1);
 
         victoire = true;
     }
 
-    // Si le joueur 2 gagne
+    // Computer win
     @SuppressLint("SetTextI18n")
     public void victoireRond() {
         AlertDialog alertDialog = new AlertDialog.Builder(OnePlayerActivity.this).create();
@@ -227,12 +236,12 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
 
-        // Incrémenter le compteur de victoire
+        // Increment score
         scoreJ2++;
-        m_ScoreJ2.setText(getString(R.string.score_J2) + scoreJ2);
+        m_ScoreJ2.setText(getString(R.string.computer) + scoreJ2);
     }
 
-    // Si la grille est rempli et que personne n'a gagné
+    // Grid full
     public void egalite() {
         AlertDialog alertDialog = new AlertDialog.Builder(OnePlayerActivity.this).create();
         alertDialog.setTitle(getString(R.string.egalite));
@@ -250,14 +259,14 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void rejouer() {
-        // Réinitialisation des cases
+        // Reset cases
         for (int i = 0; i <= 8; i++) {
             croix[i] = false;
             rond[i] = false;
             box[i] = false;
         }
 
-        // Remise à 0 du texte sur les boutons
+        // Reset text
         for (int i = 0; i <= 8; i++) {
             btn[i].setText("");
         }
@@ -265,12 +274,11 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
         victoire = false;
     }
 
-    // Bouton retour
+    // Button back
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
     }
 }

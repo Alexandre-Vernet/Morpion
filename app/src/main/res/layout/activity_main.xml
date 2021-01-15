@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="@string/bienvenue"
+        android:text="Player name"
         android:textColor="#FFF"
         android:textSize="20sp" />
 
@@ -47,7 +47,7 @@
             android:id="@+id/btnSettings"
             android:layout_width="250dp"
             android:layout_height="100dp"
-            android:text="@string/menu_a_propos"
+            android:text="@string/menu_settings"
             android:textSize="30sp" />
 
         <Button

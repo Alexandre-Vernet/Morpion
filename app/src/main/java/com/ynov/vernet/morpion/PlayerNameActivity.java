@@ -20,7 +20,7 @@ public class PlayerNameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nom_joueur);
+        setContentView(R.layout.activity_name_player);
 
         context = getApplicationContext();
         editTexNamePlayer1 = findViewById(R.id.editTexNamePlayer1);

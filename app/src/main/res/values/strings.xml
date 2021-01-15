@@ -1,15 +1,14 @@
 <resources>
-    <string name="app_name" translatable="false">Morpion</string>
+    <string name="app_name">Tic Tac Toe</string>
     <string name="joueur1">Player 1 : 0</string>
     <string name="joueur2">Player 2 : 0</string>
     <string name="menu_1_joueur">Singleplayer</string>
     <string name="menu_2_joueurs">Multiplayer</string>
-    <string name="menu_a_propos">About</string>
+    <string name="menu_settings">Settings</string>
     <string name="menu_quitter">Quit</string>
     <string name="entrez_votre_nom">Enter your name</string>
     <string name="votre_nom">Your name</string>
     <string name="jouer">Play</string>
-    <string name="bienvenue">"Welcolme "</string>
     <string name="victoire">Victory</string>
     <string name="gagne">You won !</string>
     <string name="defaite">Defeat</string>
@@ -20,23 +19,9 @@
     <string name="personne_n_a_gagne">Nobody won !</string>
     <string name="victoire_J1">Player 1 wins !</string>
     <string name="victoire_J2">Player 2 wins !</string>
-    <string name="title_activity_settings">SettingsActivity</string>
 
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="general">General</string>
-    <string name="nomJoueur1">Name player 1</string>
     <string name="cannot_be_empty">Textbox cannot be empty</string>
+    <string name="name">Name</string>
+    <string name="computer">Computer : %1$d</string>
 </resources>
