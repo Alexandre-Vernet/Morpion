@@ -25,10 +25,10 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
     TextView[] btn = new TextView[9];
 
     // Difference between crosses & rounds
-    private final boolean[] croix = new boolean[9];
-    private final boolean[] rond = new boolean[9];
+    private final boolean[] cross = new boolean[9];
+    private final boolean[] round = new boolean[9];
     private final boolean[] box = new boolean[9];
-    private boolean victoire = false;
+    private boolean victory = false;
     private int scoreJ1, scoreJ2 = 0;
 
     @Override
@@ -85,44 +85,46 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn0:
-                placementPionJoueur(0);
+                playerPlacement(0);
                 break;
             case R.id.btn1:
-                placementPionJoueur(1);
+                playerPlacement(1);
                 break;
             case R.id.btn2:
-                placementPionJoueur(2);
+                playerPlacement(2);
                 break;
             case R.id.btn3:
-                placementPionJoueur(3);
+                playerPlacement(3);
                 break;
             case R.id.btn4:
-                placementPionJoueur(4);
+                playerPlacement(4);
                 break;
             case R.id.btn5:
-                placementPionJoueur(5);
+                playerPlacement(5);
                 break;
             case R.id.btn6:
-                placementPionJoueur(6);
+                playerPlacement(6);
                 break;
             case R.id.btn7:
-                placementPionJoueur(7);
+                playerPlacement(7);
                 break;
             case R.id.btn8:
-                placementPionJoueur(8);
+                playerPlacement(8);
                 break;
         }
     }
 
     // Player choice
-    public void placementPionJoueur(int noBtn) {
+    public void playerPlacement(int noBtn) {
         // Don't double click
-        if (btn[noBtn].getText() == "") {
-            croix[noBtn] = true;
+        if (!box[noBtn]) {
+            cross[noBtn] = true;
+
             btn[noBtn].setTextColor(getResources().getColor(R.color.joueur1));
+            btn[noBtn].setText("X");
+
             box[noBtn] = true;
 
-            btn[noBtn].setText("X");
 
             // Check stats
             stats();
@@ -132,82 +134,77 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    choixPionOrdi();
+                    computerPlacement();
                 }
             }, 1000);
         }
     }
 
     // Computer choice
-    public void choixPionOrdi() {
-        // Choisir un nombre entre 0 et 8
-        int choixOrdi = ThreadLocalRandom.current().nextInt(0, 8);
+    public void computerPlacement() {
+        // Choose number between 0 & 8
+        int computerChoice = ThreadLocalRandom.current().nextInt(0, 8);
 
         // if computer chose a wrong case
-        for (int i = 0; i <= 9; i++)
-            while (choixOrdi == i && box[i])
-                // Re-tirer un nombre
-                choixOrdi = ThreadLocalRandom.current().nextInt(0, 8);
+        for (int i = 0; i <= 9; i++) {
+            while (computerChoice == i)
+                computerChoice = ThreadLocalRandom.current().nextInt(0, 8);
+        }
 
-        placementPionOrdi(choixOrdi);
-    }
 
-    // Computer playing
-    public void placementPionOrdi(int noBtn) {
-        if (!victoire) {
-            rond[noBtn] = true;
-            btn[noBtn].setTextColor(getResources().getColor(R.color.joueur2));
-
-            btn[noBtn].setText("O");
+        if (!victory) {
+            round[computerChoice] = true;
+            box[computerChoice] = true;
+            btn[computerChoice].setTextColor(getResources().getColor(R.color.joueur2));
+            btn[computerChoice].setText("O");
 
             stats();
         }
     }
 
-    // Gestion des manches gagnées
     public void stats() {
         /*Crosses*/
         // Lines
-        if ((croix[0] && croix[1] && croix[2]) || (croix[3] && croix[4] && croix[5]) || (croix[6] && croix[7] && croix[8]))
-            victoireCroix();
+        if ((cross[0] && cross[1] && cross[2]) || (cross[3] && cross[4] && cross[5]) || (cross[6] && cross[7] && cross[8]))
+            victoryCross();
 
         // Columns
-        if ((croix[0] && croix[3] && croix[6]) || (croix[1] && croix[4] && croix[7]) || (croix[2] && croix[5] && croix[8]))
-            victoireCroix();
+        if ((cross[0] && cross[3] && cross[6]) || (cross[1] && cross[4] && cross[7]) || (cross[2] && cross[5] && cross[8]))
+            victoryCross();
 
         // Diagonals
-        if ((croix[0] && croix[4] && croix[8]) || (croix[2] && croix[4] && croix[6]))
-            victoireCroix();
+        if ((cross[0] && cross[4] && cross[8]) || (cross[2] && cross[4] && cross[6]))
+            victoryCross();
 
         /*Rounds*/
         // Lines
-        if ((rond[0] && rond[1] && rond[2]) || (rond[3] && rond[4] && rond[5]) || (rond[6] && rond[7] && rond[8]))
-            victoireRond();
+        if ((round[0] && round[1] && round[2]) || (round[3] && round[4] && round[5]) || (round[6] && round[7] && round[8]))
+            victoryRound();
 
         // Columns
-        if ((rond[0] && rond[3] && rond[6]) || (rond[1] && rond[4] && rond[7]) || (rond[2] && rond[5] && rond[8]))
-            victoireRond();
+        if ((round[0] && round[3] && round[6]) || (round[1] && round[4] && round[7]) || (round[2] && round[5] && round[8]))
+            victoryRound();
 
         // Diagonals
-        if ((rond[0] && rond[4] && rond[8]) || (rond[2] && rond[4] && rond[6]))
-            victoireRond();
+        if ((round[0] && round[4] && round[8]) || (round[2] && round[4] && round[6]))
+            victoryRound();
 
         /*If grid is full*/
-        if (box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8] && !victoire)
-            egalite();
+        if (box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8] && !victory)
+            equality();
     }
 
     // Player win
     @SuppressLint("SetTextI18n")
-    public void victoireCroix() {
+    public void victoryCross() {
         AlertDialog alertDialog = new AlertDialog.Builder(OnePlayerActivity.this).create();
-        alertDialog.setTitle(getString(R.string.victoire));
+        alertDialog.setTitle(getString(R.string.victory));
         alertDialog.setMessage(getString(R.string.gagne));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        rejouer();
+                        replay();
                     }
                 });
         alertDialog.setCanceledOnTouchOutside(false);
@@ -217,12 +214,12 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
         scoreJ1++;
         m_ScoreJ1.setText(namePlayer1 + " : " + scoreJ1);
 
-        victoire = true;
+        victory = true;
     }
 
     // Computer win
     @SuppressLint("SetTextI18n")
-    public void victoireRond() {
+    public void victoryRound() {
         AlertDialog alertDialog = new AlertDialog.Builder(OnePlayerActivity.this).create();
         alertDialog.setTitle(getString(R.string.defaite));
         alertDialog.setMessage(getString(R.string.perdu));
@@ -230,7 +227,7 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        rejouer();
+                        replay();
                     }
                 });
         alertDialog.setCanceledOnTouchOutside(false);
@@ -242,27 +239,27 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
     }
 
     // Grid full
-    public void egalite() {
+    public void equality() {
         AlertDialog alertDialog = new AlertDialog.Builder(OnePlayerActivity.this).create();
-        alertDialog.setTitle(getString(R.string.egalite));
+        alertDialog.setTitle(getString(R.string.equality));
         alertDialog.setMessage(getString(R.string.personne_n_a_gagne));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        rejouer();
+                        replay();
                     }
                 });
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
-        victoire = true;
+        victory = true;
     }
 
-    public void rejouer() {
+    public void replay() {
         // Reset cases
         for (int i = 0; i <= 8; i++) {
-            croix[i] = false;
-            rond[i] = false;
+            cross[i] = false;
+            round[i] = false;
             box[i] = false;
         }
 
@@ -271,14 +268,26 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
             btn[i].setText("");
         }
 
-        victoire = false;
+        victory = false;
     }
 
     // Button back
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        finish();
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(R.string.leave)
+                .setMessage(R.string.stop_game_progress)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        OnePlayerActivity.super.onBackPressed();
+                        OnePlayerActivity.this.startActivity(new Intent(OnePlayerActivity.this.getApplicationContext(), MainActivity.class));
+                        OnePlayerActivity.this.finish();
+                    }
+                })
+                .setNegativeButton(R.string.no, null)
+                .show();
+        alertDialog.setCanceledOnTouchOutside(false);
     }
 }

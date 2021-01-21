@@ -9,19 +9,23 @@
     <string name="entrez_votre_nom">Enter your name</string>
     <string name="votre_nom">Your name</string>
     <string name="jouer">Play</string>
-    <string name="victoire">Victory</string>
+    <string name="victory">Victory</string>
     <string name="gagne">You won !</string>
     <string name="defaite">Defeat</string>
     <string name="perdu">You loose</string>
     <string name="score_j1">"Player 1 : "</string>
     <string name="score_J2">"Player 2 : "</string>
-    <string name="egalite">Equality</string>
+    <string name="equality">Equality</string>
     <string name="personne_n_a_gagne">Nobody won !</string>
-    <string name="victoire_J1">Player 1 wins !</string>
-    <string name="victoire_J2">Player 2 wins !</string>
+    <string name="victory_J1">Player 1 wins !</string>
+    <string name="victory_J2">Player 2 wins !</string>
 
     <string name="general">General</string>
     <string name="cannot_be_empty">Textbox cannot be empty</string>
     <string name="name">Name</string>
     <string name="computer">Computer : %1$d</string>
+    <string name="leave">Leave</string>
+    <string name="stop_game_progress">Stop game in progress ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

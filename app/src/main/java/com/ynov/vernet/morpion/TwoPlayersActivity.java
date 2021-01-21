@@ -13,10 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class TwoPlayersActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Crosses & Rounds
-    private final boolean[] croix = new boolean[9];
-    private final boolean[] rond = new boolean[9];
+    private final boolean[] cross = new boolean[9];
+    private final boolean[] round = new boolean[9];
     private final boolean[] box = new boolean[9];
-    private boolean victoire = false;
+    private boolean victory = false;
 
     // Scores
     TextView m_ScoreJ1, m_ScoreJ2;
@@ -109,11 +109,11 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
 
             if (choixPion % 2 == 0) {
                 pion = "X";
-                croix[noBtn] = true;
+                cross[noBtn] = true;
                 btn[noBtn].setTextColor(getResources().getColor(R.color.joueur1));
             } else {
                 pion = "O";
-                rond[noBtn] = true;
+                round[noBtn] = true;
                 btn[noBtn].setTextColor(getResources().getColor(R.color.joueur2));
             }
             box[noBtn] = true;
@@ -127,46 +127,46 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
     public void stats() {
         /*Crosses*/
         // Lines
-        if ((croix[0] && croix[1] && croix[2]) || (croix[3] && croix[4] && croix[5]) || (croix[6] && croix[7] && croix[8]))
-            victoireCroix();
+        if ((cross[0] && cross[1] && cross[2]) || (cross[3] && cross[4] && cross[5]) || (cross[6] && cross[7] && cross[8]))
+            victorycross();
 
         // Columns
-        if ((croix[0] && croix[3] && croix[6]) || (croix[1] && croix[4] && croix[7]) || (croix[2] && croix[5] && croix[8]))
-            victoireCroix();
+        if ((cross[0] && cross[3] && cross[6]) || (cross[1] && cross[4] && cross[7]) || (cross[2] && cross[5] && cross[8]))
+            victorycross();
 
         // Diagonals
-        if ((croix[0] && croix[4] && croix[8]) || (croix[2] && croix[4] && croix[6]))
-            victoireCroix();
+        if ((cross[0] && cross[4] && cross[8]) || (cross[2] && cross[4] && cross[6]))
+            victorycross();
 
         /*Rounds*/
         // Lines
-        if ((rond[0] && rond[1] && rond[2]) || (rond[3] && rond[4] && rond[5]) || (rond[6] && rond[7] && rond[8]))
-            victoireRond();
+        if ((round[0] && round[1] && round[2]) || (round[3] && round[4] && round[5]) || (round[6] && round[7] && round[8]))
+            victoryRound();
 
         // Columns
-        if ((rond[0] && rond[3] && rond[6]) || (rond[1] && rond[4] && rond[7]) || (rond[2] && rond[5] && rond[8]))
-            victoireRond();
+        if ((round[0] && round[3] && round[6]) || (round[1] && round[4] && round[7]) || (round[2] && round[5] && round[8]))
+            victoryRound();
 
         // Diagonals
-        if ((rond[0] && rond[4] && rond[8]) || (rond[2] && rond[4] && rond[6]))
-            victoireRond();
+        if ((round[0] && round[4] && round[8]) || (round[2] && round[4] && round[6]))
+            victoryRound();
 
         /*If grid is full*/
-        if (box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8] && !victoire)
-            egalite();
+        if (box[0] && box[1] && box[2] && box[3] && box[4] && box[5] && box[6] && box[7] && box[8] && !victory)
+            equality();
     }
 
     // Player 1 wins
     @SuppressLint("SetTextI18n")
-    public void victoireCroix() {
+    public void victorycross() {
         AlertDialog alertDialog = new AlertDialog.Builder(TwoPlayersActivity.this).create();
-        alertDialog.setTitle(getString(R.string.victoire));
-        alertDialog.setMessage(getString(R.string.victoire_J1));
+        alertDialog.setTitle(getString(R.string.victory));
+        alertDialog.setMessage(getString(R.string.victory_J1));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        rejouer();
+                        replay();
                     }
                 });
         alertDialog.setCanceledOnTouchOutside(false);
@@ -176,20 +176,20 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
         scoreJ1++;
         m_ScoreJ1.setText(getString(R.string.score_j1) + scoreJ1);
 
-        victoire = true;
+        victory = true;
     }
 
     // Player 2 wins
     @SuppressLint("SetTextI18n")
-    public void victoireRond() {
+    public void victoryRound() {
         AlertDialog alertDialog = new AlertDialog.Builder(TwoPlayersActivity.this).create();
-        alertDialog.setTitle(getString(R.string.victoire));
-        alertDialog.setMessage(getString(R.string.victoire_J2));
+        alertDialog.setTitle(getString(R.string.victory));
+        alertDialog.setMessage(getString(R.string.victory_J2));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        rejouer();
+                        replay();
                     }
                 });
         alertDialog.setCanceledOnTouchOutside(false);
@@ -201,28 +201,28 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
     }
 
     // if grid is full
-    public void egalite() {
+    public void equality() {
         AlertDialog alertDialog = new AlertDialog.Builder(TwoPlayersActivity.this).create();
-        alertDialog.setTitle(getString(R.string.egalite));
+        alertDialog.setTitle(getString(R.string.equality));
         alertDialog.setMessage(getString(R.string.personne_n_a_gagne));
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        rejouer();
+                        replay();
                     }
                 });
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
-        victoire = true;
+        victory = true;
     }
 
-    public void rejouer() {
+    public void replay() {
         choixPion = 1;
         // Reset cases
         for (int i = 0; i <= 8; i++) {
-            croix[i] = false;
-            rond[i] = false;
+            cross[i] = false;
+            round[i] = false;
             box[i] = false;
         }
 
@@ -231,7 +231,7 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
             btn[i].setText("");
         }
 
-        victoire = false;
+        victory = false;
     }
 
     // Button back
