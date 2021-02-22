@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,17 +20,19 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
 
     // Create score
     TextView m_ScoreJ1, m_ScoreJ2;
+    TextView[] btn = new TextView[9];
 
     String namePlayer1 = "";
 
-    TextView[] btn = new TextView[9];
-
     // Difference between crosses & rounds
-    private final boolean[] cross = new boolean[9];
-    private final boolean[] round = new boolean[9];
+    private final boolean[] cross = new boolean[9]; /*Player*/
+    private final boolean[] round = new boolean[9]; /*Computer*/
     private final boolean[] box = new boolean[9];
     private boolean victory = false;
     private int scoreJ1, scoreJ2 = 0;
+
+    // Debug
+    private static final String TAG = "OnePlayerActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,47 +122,47 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
         // Don't double click
         if (!box[noBtn]) {
             cross[noBtn] = true;
-
+            box[noBtn] = true;
             btn[noBtn].setTextColor(getResources().getColor(R.color.joueur1));
             btn[noBtn].setText("X");
-
-            box[noBtn] = true;
 
 
             // Check stats
             stats();
 
-            // Wait 1s and computer's turn
+            // Wait 1/2s and computer's turn
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     computerPlacement();
                 }
-            }, 1000);
+            }, 500);
         }
+    }
+
+    public int chooseNumber() {
+        return ThreadLocalRandom.current().nextInt(0, 8);
     }
 
     // Computer choice
     public void computerPlacement() {
         // Choose number between 0 & 8
-        int computerChoice = ThreadLocalRandom.current().nextInt(0, 8);
+        int computerChoice = chooseNumber();
 
         // if computer chose a wrong case
-        for (int i = 0; i <= 9; i++) {
-            while (computerChoice == i)
-                computerChoice = ThreadLocalRandom.current().nextInt(0, 8);
-        }
+        for (int i = 0; i < 8; i++)
+            if (computerChoice == i && !box[i])
+                computerPlacement();
 
+        Log.d(TAG, "computerPlacement: " + computerChoice);
 
-        if (!victory) {
-            round[computerChoice] = true;
-            box[computerChoice] = true;
-            btn[computerChoice].setTextColor(getResources().getColor(R.color.joueur2));
-            btn[computerChoice].setText("O");
+        round[computerChoice] = true;
+        box[computerChoice] = true;
+        btn[computerChoice].setTextColor(getResources().getColor(R.color.joueur2));
+        btn[computerChoice].setText("O");
 
-            stats();
-        }
+        stats();
     }
 
     public void stats() {
@@ -235,7 +238,7 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
 
         // Increment score
         scoreJ2++;
-        m_ScoreJ2.setText(getString(R.string.computer) + scoreJ2);
+        m_ScoreJ2.setText(getString(R.string.computer, scoreJ2));
     }
 
     // Grid full

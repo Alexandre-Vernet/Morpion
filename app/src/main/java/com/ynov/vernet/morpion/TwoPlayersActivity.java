@@ -237,8 +237,20 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
     // Button back
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-        finish();
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(R.string.leave)
+                .setMessage(R.string.stop_game_progress)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        TwoPlayersActivity.super.onBackPressed();
+                        TwoPlayersActivity.this.startActivity(new Intent(TwoPlayersActivity.this.getApplicationContext(), MainActivity.class));
+                        TwoPlayersActivity.this.finish();
+                    }
+                })
+                .setNegativeButton(R.string.no, null)
+                .show();
+        alertDialog.setCanceledOnTouchOutside(false);
     }
 }
