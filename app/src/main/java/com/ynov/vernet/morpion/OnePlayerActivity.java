@@ -123,7 +123,7 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
         if (!box[noBtn]) {
             cross[noBtn] = true;
             box[noBtn] = true;
-            btn[noBtn].setTextColor(getResources().getColor(R.color.joueur1));
+            btn[noBtn].setTextColor(getResources().getColor(R.color.player1));
             btn[noBtn].setText("X");
 
 
@@ -159,7 +159,7 @@ public class OnePlayerActivity extends AppCompatActivity implements View.OnClick
 
         round[computerChoice] = true;
         box[computerChoice] = true;
-        btn[computerChoice].setTextColor(getResources().getColor(R.color.joueur2));
+        btn[computerChoice].setTextColor(getResources().getColor(R.color.player2));
         btn[computerChoice].setText("O");
 
         stats();

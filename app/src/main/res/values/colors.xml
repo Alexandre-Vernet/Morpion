@@ -4,6 +4,6 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#0077FF</color>
 
-    <color name="joueur1">#0077FF</color>
-    <color name="joueur2">#FF0000</color>
+    <color name="player1">#0077FF</color>
+    <color name="player2">#FF0000</color>
 </resources>

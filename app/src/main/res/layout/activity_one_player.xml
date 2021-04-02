@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".OnePlayerActivity">
 
-    <!--    Mode de jeu-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,9 +15,9 @@
         android:textSize="50sp" />
 
     <TextView
+        android:id="@+id/nomJoueur1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/nomJoueur1" />
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -27,7 +25,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <!--    Affichage des scores-->
+        <!--    Scores-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -37,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/joueur1"
-                android:textColor="@color/joueur1"
+                android:textColor="@color/player1"
                 android:textSize="30sp" />
 
             <TextView
@@ -51,12 +49,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/joueur2"
-                android:textColor="@color/joueur2"
+                android:textColor="@color/player2"
                 android:textSize="30sp" />
         </LinearLayout>
 
 
-        <!--    Zone de jeu-->
+        <!--Game-->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,37 +62,19 @@
 
             <TextView
                 android:id="@+id/btn0"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:layout_marginStart="5dp"
-                android:background="#dadada"
-                android:clickable="true"
-                android:focusable="true"
-                android:textAlignment="center"
-                android:textSize="90sp" />
+                style="@style/textViewBox"
+                android:layout_marginStart="5dp" />
 
             <TextView
                 android:id="@+id/btn1"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
-                android:layout_marginStart="5dp"
-                android:background="#dadada"
-                android:clickable="true"
-                android:focusable="true"
-                android:textAlignment="center"
-                android:textSize="90sp" />
+                style="@style/textViewBox"
+                android:layout_marginStart="5dp" />
 
             <TextView
                 android:id="@+id/btn2"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                style="@style/textViewBox"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#dadada"
-                android:clickable="true"
-                android:focusable="true"
-                android:textAlignment="center"
-                android:textSize="90sp" />
+                android:layout_marginRight="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -103,40 +83,22 @@
 
             <TextView
                 android:id="@+id/btn3"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                style="@style/textViewBox"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:background="#dadada"
-                android:clickable="true"
-                android:focusable="true"
-                android:textAlignment="center"
-                android:textSize="90sp" />
+                android:layout_marginTop="5dp" />
 
             <TextView
                 android:id="@+id/btn4"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                style="@style/textViewBox"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:background="#dadada"
-                android:clickable="true"
-                android:focusable="true"
-                android:textAlignment="center"
-                android:textSize="90sp" />
+                android:layout_marginTop="5dp" />
 
             <TextView
                 android:id="@+id/btn5"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                style="@style/textViewBox"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#dadada"
-                android:clickable="true"
-                android:focusable="true"
-                android:textAlignment="center"
-                android:textSize="90sp" />
+                android:layout_marginRight="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -145,40 +107,22 @@
 
             <TextView
                 android:id="@+id/btn6"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                style="@style/textViewBox"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:background="#dadada"
-                android:clickable="true"
-                android:focusable="true"
-                android:textAlignment="center"
-                android:textSize="90sp" />
+                android:layout_marginTop="5dp" />
 
             <TextView
                 android:id="@+id/btn7"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                style="@style/textViewBox"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:background="#dadada"
-                android:clickable="true"
-                android:focusable="true"
-                android:textAlignment="center"
-                android:textSize="90sp" />
+                android:layout_marginTop="5dp" />
 
             <TextView
                 android:id="@+id/btn8"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                style="@style/textViewBox"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:background="#dadada"
-                android:clickable="true"
-                android:focusable="true"
-                android:textAlignment="center"
-                android:textSize="90sp" />
+                android:layout_marginRight="5dp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

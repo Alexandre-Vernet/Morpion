@@ -105,20 +105,20 @@ public class TwoPlayersActivity extends AppCompatActivity implements View.OnClic
             // Difference between crosses & rounds
             choixPion++;
 
-            String pion;
+            String pawn;
 
             if (choixPion % 2 == 0) {
-                pion = "X";
+                pawn = "X";
                 cross[noBtn] = true;
-                btn[noBtn].setTextColor(getResources().getColor(R.color.joueur1));
+                btn[noBtn].setTextColor(getResources().getColor(R.color.player1));
             } else {
-                pion = "O";
+                pawn = "O";
                 round[noBtn] = true;
-                btn[noBtn].setTextColor(getResources().getColor(R.color.joueur2));
+                btn[noBtn].setTextColor(getResources().getColor(R.color.player2));
             }
             box[noBtn] = true;
 
-            btn[noBtn].setText(pion);
+            btn[noBtn].setText(pawn);
 
             stats();
         }
