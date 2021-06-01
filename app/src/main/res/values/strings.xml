@@ -2,12 +2,11 @@
     <string name="app_name">Tic Tac Toe</string>
     <string name="multiplayer">Multiplayer</string>
     <string name="enter_name">Enter your name</string>
-    <string name="jouer">Play</string>
+    <string name="play">Play</string>
     <string name="victory">Victory</string>
-    <string name="won">You won !</string>
     <string name="defeat">Defeat</string>
     <string name="loose">You loose</string>
-    <string name="score_p1">%1$d : %2$s</string>
+    <string name="score_p1" translatable="false">%1$d : %2$s</string>
     <string name="score_p2">Player 2 : %1$d</string>
     <string name="equality">Equality</string>
     <string name="nobody_won">Nobody won !</string>

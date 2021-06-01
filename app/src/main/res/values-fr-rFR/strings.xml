@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="multiplayer">Multijoueur</string>
+    <string name="enter_name">Entrez votre nom</string>
+    <string name="play">Jouer</string>
+    <string name="victory">Victoire</string>
+    <string name="defeat">Défaite</string>
+    <string name="loose">Vous avez perdu</string>
+    <string name="score_p2">Joueur 2 : %1$d</string>
+    <string name="equality">Egalité</string>
+    <string name="nobody_won">Personne n\'a gagné !</string>
+    <string name="victory_p1">Vous avez gagné !</string>
+    <string name="victory_p2">Joueur 2 gagne !</string>
+    <string name="cannot_be_empty">La zone de texte ne peut pas être vide</string>
+    <string name="name">Nom</string>
+    <string name="leave">Quitter</string>
+    <string name="stop_game_progress">Arrêter la partie en cours ?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="ok">OK</string>
+</resources>

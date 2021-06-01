@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="30dp"
-        android:text="@string/jouer"
+        android:text="@string/play"
         android:textSize="25sp" />
 
 </LinearLayout>
