@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity" />
+
         <activity
-            android:name=".PlayerNameActivity"
+            android:name=".MainActivity"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -19,19 +19,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.shortcuts"
-                android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name=".TwoPlayersActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".OnePlayerActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".PlayerNameActivity"
             android:screenOrientation="portrait" />
     </application>
 

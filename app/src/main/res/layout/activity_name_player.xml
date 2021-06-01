@@ -13,17 +13,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:text="@string/entrez_votre_nom"
+        android:text="@string/enter_name"
         android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/editTexNamePlayer1"
+        android:id="@+id/editTextUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/votre_nom"
+        android:hint="@string/name"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="#fff"

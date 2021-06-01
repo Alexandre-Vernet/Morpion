@@ -11,50 +11,113 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:text="@string/multiplayer"
         android:textSize="50sp" />
 
-    <TextView
-        android:id="@+id/textViewPlayer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Player name"
-        android:textColor="#FFF"
-        android:textSize="20sp" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn1Player"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:text="@string/menu_1_joueur"
-            android:textSize="30sp" />
+        <!--    Scores-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btn2Players"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:text="@string/menu_2_joueurs"
-            android:textSize="30sp" />
+            <TextView
+                android:id="@+id/scoreJ1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player 1 : 0"
+                android:textColor="@color/player1"
+                android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/btnSettings"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:text="@string/menu_settings"
-            android:textSize="30sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - "
+                android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/btnLeave"
-            android:layout_width="250dp"
-            android:layout_height="100dp"
-            android:text="@string/menu_quitter"
-            android:textSize="30sp" />
+            <TextView
+                android:id="@+id/scoreJ2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player 2 : 0"
+                android:textColor="@color/player2"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <!--Game-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/btn0"
+                style="@style/textViewBox"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/btn1"
+                style="@style/textViewBox"
+                android:layout_marginStart="5dp" />
+
+            <TextView
+                android:id="@+id/btn2"
+                style="@style/textViewBox"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/btn3"
+                style="@style/textViewBox"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:id="@+id/btn4"
+                style="@style/textViewBox"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:id="@+id/btn5"
+                style="@style/textViewBox"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/btn6"
+                style="@style/textViewBox"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:id="@+id/btn7"
+                style="@style/textViewBox"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:id="@+id/btn8"
+                style="@style/textViewBox"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
